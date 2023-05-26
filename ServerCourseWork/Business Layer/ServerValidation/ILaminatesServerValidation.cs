@@ -1,4 +1,4 @@
-﻿namespace ServerCourseWork.Service_Layer.Server.ServerValidation
+﻿namespace ServerCourseWork.Business_Layer.Server.ServerValidation
 {
     interface ILaminatesServerValidation
     {

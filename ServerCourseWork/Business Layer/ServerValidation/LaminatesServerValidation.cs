@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 
-namespace ServerCourseWork.Service_Layer.Server.ServerValidation
+namespace ServerCourseWork.Business_Layer.Server.ServerValidation
 {
     class LaminatesServerValidation : ILaminatesServerValidation
     {

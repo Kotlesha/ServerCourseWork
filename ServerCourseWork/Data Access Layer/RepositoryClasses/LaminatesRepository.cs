@@ -1,8 +1,6 @@
 ﻿using ServerCourseWork.Business_Layer.Models;
 using ServerCourseWork.Data_Access_Layer.RepositoryInterfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ServerCourseWork.Data_Access_Layer.RepositoryClasses
 {
