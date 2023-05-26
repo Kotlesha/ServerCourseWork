@@ -16,25 +16,12 @@ namespace ServerCourseWork.Data_Access_Layer.Json
             writer.Write(jsonString);
         }
 
-        public static T DeserealizeFromFile<T>(string path) where T : new()
+        public static T DeserealizeFromFile<T>(string path)
         {
             using FileStream fileStream = new(path, FileMode.OpenOrCreate);
             using StreamReader reader = new(fileStream);
             string jsonString = reader.ReadToEnd();
-
-            try
-            {
-                return Deserealize<T>(jsonString);
-            }
-            catch (JsonException ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Source: {ex.Source}, ErrorMessage: {ex.Message}");
-                Console.WriteLine($"StackTrace:\n {ex.StackTrace}");
-                Console.WriteLine("A new instance of the object has been created with default fields!");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                return new();
-            }
+            return Deserealize<T>(jsonString);
         }
     }
 }
