@@ -1,9 +1,5 @@
-﻿using ServerCourseWork.Business_Layer.Models;
-using ServerCourseWork.Service_Layer;
+﻿using ServerCourseWork.Service_Layer;
 using ServerCourseWork.Service_Layer.Server;
-using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace ServerCourseWork
@@ -16,7 +12,7 @@ namespace ServerCourseWork
 
         static async Task Main(string[] args)
         {
-            LaminatesService laminatesService = new LaminatesService(connectionString);
+            LaminatesService laminatesService = new(connectionString);
             var laminatesServer = new LaminatesServer(ipAddress, port, laminatesService);
             await laminatesServer.StartAsync();
         }

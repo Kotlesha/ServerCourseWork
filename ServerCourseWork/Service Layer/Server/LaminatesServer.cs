@@ -2,6 +2,7 @@
 using ServerCourseWork.Business_Layer.Server.ServerValidation;
 using ServerCourseWork.Data_Access_Layer.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -16,6 +17,8 @@ namespace ServerCourseWork.Service_Layer.Server
         private readonly int _port;
         private readonly LaminatesService _laminatesService;
         private TcpListener _tcpListener;
+        private List<TcpClient> _clients = new();
+        private object locker = new();
         
         public LaminatesServer(string ipAddress, int port, LaminatesService laminatesService)
         {
@@ -58,6 +61,7 @@ namespace ServerCourseWork.Service_Layer.Server
             {
                 TcpClient tcpClient = await _tcpListener.AcceptTcpClientAsync();
                 Console.WriteLine("Клиент подключен!");
+                lock (locker) _clients.Add(tcpClient);
                 ProcessDataAsync(tcpClient);
             }
         }
